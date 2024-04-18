@@ -6,4 +6,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", RedirectView.as_view(url=reverse_lazy("jobs:job_list")), name="home"),
     path("jobs/", include("jobs.urls", namespace="jobs")),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]

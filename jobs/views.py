@@ -5,7 +5,7 @@ from .filters import JobFilter
 
 
 def job_list(request):
-    jobs = Job.objects.filter(is_active=True)
+    jobs = Job.objects.filter(is_active=True).prefetch_related("skills")
     job_filter = JobFilter(request.GET, jobs)
     return render(
         request, "jobs/job_list.html", {"jobs": job_filter.qs, "filter": job_filter}
